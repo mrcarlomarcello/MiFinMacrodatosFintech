@@ -1,0 +1,10 @@
+ 1  pwd
+    2  ls
+    6  cat test.txt | python mapper.py | python reducer.py
+    7  hdfs dfs -ls /user/cloudera
+    8  hadoop fs -put test.txt /user/cloudera/test.txt
+    9  hdfs dfs -ls /user/cloudera
+12  hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar -file /home/cloudera/mapper.py /home/cloudera/reducer.py -mapper "python mapper.py" -reducer "python reducer.py" -input /user/cloudera/test.txt -output /user/cloudera/map_red_output01
+   13  hdfs dfs -ls /user/cloudera/map_red_output01
+   14  hdfs dfs -cat /user/cloudera/map_red_output01/part-00000
+
